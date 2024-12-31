@@ -1,0 +1,21 @@
+@use '../functions' as *;
+@use '../variables' as *;
+@use 'sass:map';
+
+//prettier-ignore
+$text-presets: (
+  'text-preset-1-manrope-bold-20-desktop': ('font-family': "Manrope", 'font-weight': 700, 'font-size': rem-calc(20), 'line-height': rem-calc(28), 'letter-spacing': 0.25px),
+  'text-preset-1-manrope-bold-16-mobile': ('font-family': "Manrope", 'font-weight': 700, 'font-size': rem-calc(16), 'line-height': rem-calc(24), 'letter-spacing': 0.2px),
+  'text-preset-1-manrope-bold-13-mobile': ('font-family': "Manrope", 'font-weight': 700, 'font-size': rem-calc(13), 'line-height': rem-calc(20), 'letter-spacing': 0.12px),
+  'text-preset-1-manrope-medium-mobile': ('font-family': "Manrope", 'font-weight': 500, 'font-size': rem-calc(13), 'line-height': rem-calc(20), 'letter-spacing': 0.12px),
+  'text-preset-2-manrope-medium-mobile': ('font-family': "Manrope", 'font-weight': 500, 'font-size': rem-calc(13), 'line-height': rem-calc(20), 'letter-spacing': rem-calc(5)),
+);
+
+@mixin typography($text-preset) {
+  $preset: map.get($text-presets, $text-preset);
+  font-family: map.get($preset, 'font-family');
+  font-weight: map.get($preset, 'font-weight');
+  font-size: map.get($preset, 'font-size');
+  line-height: map.get($preset, 'line-height');
+  letter-spacing: map.get($preset, 'letter-spacing');
+}
